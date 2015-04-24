@@ -1,0 +1,425 @@
+<!DOCTYPE HTML>
+<html lang="en-US" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
+        <title>systemd | Ubuntu 15.04 Exploration</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 1.5.0">
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+        
+    
+    
+    <link rel="next" href="../../../content/package/systemd/info.html" />
+    
+    
+    <link rel="prev" href="../../../content/package/index.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+<link rel="stylesheet" href="../../../gitbook/style.css">
+
+
+        
+    <div class="book" data-level="1.1" data-basepath="../../.." data-revision="1429868541134">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+    	
+    	
+    	
+
+        
+
+        
+    
+        
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../../index.html">
+                        <i class="fa fa-check"></i>
+                        
+                         Introduction
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1" data-path="content/package/index.html">
+            
+                
+                    <a href="../../../content/package/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                         套件
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter active" data-level="1.1" data-path="content/package/systemd/index.html">
+            
+                
+                    <a href="../../../content/package/systemd/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                         systemd
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.1.1" data-path="content/package/systemd/info.html">
+            
+                
+                    <a href="../../../content/package/systemd/info.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.1.</b>
+                        
+                         info
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.1.2" data-path="content/package/systemd/note.html">
+            
+                
+                    <a href="../../../content/package/systemd/note.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.2.</b>
+                        
+                         note
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.1.3" data-path="content/package/systemd/report.html">
+            
+                
+                    <a href="../../../content/package/systemd/report.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.3.</b>
+                        
+                         report
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Published using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Toggle share dropdown"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">Twitter</button>
+                <button type="button" data-sharing="google-plus" class="button">Google</button>
+                <button type="button" data-sharing="facebook" class="button">Facebook</button>
+                <button type="button" data-sharing="weibo" class="button">Weibo</button>
+                <button type="button" data-sharing="instapaper" class="button">Instapaper</button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../../" >Ubuntu 15.04 Exploration</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-gitbook_3">
+                    
+                        <h1 id="systemd">systemd</h1>
+<h2 id="exploration">Exploration</h2>
+<ul>
+<li><a href="info.html">info</a></li>
+<li><a href="note.html">note</a></li>
+<li><a href="report.html">report</a></li>
+</ul>
+<h2 id="manual">Manual</h2>
+<ul>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/bootctl.1.html" target="_blank">bootctl</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/busctl.1.html" target="_blank">busctl</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/hostnamectl.1.html" target="_blank">hostnamectl</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/journalctl.1.html" target="_blank">journalctl</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/localectl.1.html" target="_blank">localectl</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/loginctl.1.html" target="_blank">loginctl</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/machinectl.1.html" target="_blank">machinectl</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/networkctl.1.html" target="_blank">networkctl</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemctl.1.html" target="_blank">systemctl</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd.1.html" target="_blank">systemd</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-analyze.1.html" target="_blank">systemd-analyze</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-ask-password.1.html" target="_blank">systemd-ask-password</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-bootchart.1.html" target="_blank">systemd-bootchart</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-cat.1.html" target="_blank">systemd-cat</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-cgls.1.html" target="_blank">systemd-cgls</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-cgtop.1.html" target="_blank">systemd-cgtop</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-delta.1.html" target="_blank">systemd-delta</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-detect-virt.1.html" target="_blank">systemd-detect-virt</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-escape.1.html" target="_blank">systemd-escape</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-inhibit.1.html" target="_blank">systemd-inhibit</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-machine-id-commit.1.html" target="_blank">systemd-machine-id-commit</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-machine-id-setup.1.html" target="_blank">systemd-machine-id-setup</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-notify.1.html" target="_blank">systemd-notify</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-nspawn.1.html" target="_blank">systemd-nspawn</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-path.1.html" target="_blank">systemd-path</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-run.1.html" target="_blank">systemd-run</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/systemd-tty-ask-password-agent.1.html" target="_blank">systemd-tty-ask-password-agent</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/vivid/man1/timedatectl.1.html" target="_blank">timedatectl</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/binfmt.d.5.html" target="_blank">binfmt.d</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/bootchart.conf.5.html" target="_blank">bootchart.conf</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/hostname.5.html" target="_blank">hostname</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/journald.conf.5.html" target="_blank">journald.conf</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/locale.conf.5.html" target="_blank">locale.conf</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/localtime.5.html" target="_blank">localtime</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/logind.conf.5.html" target="_blank">logind.conf</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/machine-id.5.html" target="_blank">machine-id</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/machine-info.5.html" target="_blank">machine-info</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/modules-load.d.5.html" target="_blank">modules-load.d</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/os-release.5.html" target="_blank">os-release</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/resolved.conf.5.html" target="_blank">resolved.conf</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/sysctl.d.5.html" target="_blank">sysctl.d</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd-sleep.conf.5.html" target="_blank">systemd-sleep.conf</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd-system.conf.5.html" target="_blank">systemd-system.conf</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.automount.5.html" target="_blank">systemd.automount</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.device.5.html" target="_blank">systemd.device</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.exec.5.html" target="_blank">systemd.exec</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.kill.5.html" target="_blank">systemd.kill</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.link.5.html" target="_blank">systemd.link</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.mount.5.html" target="_blank">systemd.mount</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.netdev.5.html" target="_blank">systemd.netdev</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.network.5.html" target="_blank">systemd.network</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.path.5.html" target="_blank">systemd.path</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.preset.5.html" target="_blank">systemd.preset</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.resource-control.5.html" target="_blank">systemd.resource-control</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.scope.5.html" target="_blank">systemd.scope</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.service.5.html" target="_blank">systemd.service</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.slice.5.html" target="_blank">systemd.slice</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.snapshot.5.html" target="_blank">systemd.snapshot</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.socket.5.html" target="_blank">systemd.socket</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.swap.5.html" target="_blank">systemd.swap</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.target.5.html" target="_blank">systemd.target</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.timer.5.html" target="_blank">systemd.timer</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/systemd.unit.5.html" target="_blank">systemd.unit</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/sysusers.d.5.html" target="_blank">sysusers.d</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/timesyncd.conf.5.html" target="_blank">timesyncd.conf</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/tmpfiles.d.5.html" target="_blank">tmpfiles.d</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/vivid/man5/udev.conf.5.html" target="_blank">udev.conf</a></li>
+<li>$ man 7 <a href="http://manpages.ubuntu.com/manpages/vivid/man7/bootup.7.html" target="_blank">bootup</a></li>
+<li>$ man 7 <a href="http://manpages.ubuntu.com/manpages/vivid/man7/daemon.7.html" target="_blank">daemon</a></li>
+<li>$ man 7 <a href="http://manpages.ubuntu.com/manpages/vivid/man7/file-hierarchy.7.html" target="_blank">file-hierarchy</a></li>
+<li>$ man 7 <a href="http://manpages.ubuntu.com/manpages/vivid/man7/kernel-command-line.7.html" target="_blank">kernel-command-line</a></li>
+<li>$ man 7 <a href="http://manpages.ubuntu.com/manpages/vivid/man7/systemd.directives.7.html" target="_blank">systemd.directives</a></li>
+<li>$ man 7 <a href="http://manpages.ubuntu.com/manpages/vivid/man7/systemd.generator.7.html" target="_blank">systemd.generator</a></li>
+<li>$ man 7 <a href="http://manpages.ubuntu.com/manpages/vivid/man7/systemd.index.7.html" target="_blank">systemd.index</a></li>
+<li>$ man 7 <a href="http://manpages.ubuntu.com/manpages/vivid/man7/systemd.journal-fields.7.html" target="_blank">systemd.journal-fields</a></li>
+<li>$ man 7 <a href="http://manpages.ubuntu.com/manpages/vivid/man7/systemd.special.7.html" target="_blank">systemd.special</a></li>
+<li>$ man 7 <a href="http://manpages.ubuntu.com/manpages/vivid/man7/systemd.time.7.html" target="_blank">systemd.time</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/nss-mymachines.8.html" target="_blank">nss-mymachines</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-activate.8.html" target="_blank">systemd-activate</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-ask-password-console.service.8.html" target="_blank">systemd-ask-password-console.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-backlight@.service.8.html" target="_blank">systemd-backlight@.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-binfmt.service.8.html" target="_blank">systemd-binfmt.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-cryptsetup-generator.8.html" target="_blank">systemd-cryptsetup-generator</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-cryptsetup@.service.8.html" target="_blank">systemd-cryptsetup@.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-debug-generator.8.html" target="_blank">systemd-debug-generator</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-efi-boot-generator.8.html" target="_blank">systemd-efi-boot-generator</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-fsck@.service.8.html" target="_blank">systemd-fsck@.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-fsckd.service.8.html" target="_blank">systemd-fsckd.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-fstab-generator.8.html" target="_blank">systemd-fstab-generator</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-getty-generator.8.html" target="_blank">systemd-getty-generator</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-gpt-auto-generator.8.html" target="_blank">systemd-gpt-auto-generator</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-halt.service.8.html" target="_blank">systemd-halt.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-hibernate-resume-generator.8.html" target="_blank">systemd-hibernate-resume-generator</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-hibernate-resume@.service.8.html" target="_blank">systemd-hibernate-resume@.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-hostnamed.service.8.html" target="_blank">systemd-hostnamed.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-initctl.service.8.html" target="_blank">systemd-initctl.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-journald.service.8.html" target="_blank">systemd-journald.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-localed.service.8.html" target="_blank">systemd-localed.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-logind.service.8.html" target="_blank">systemd-logind.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-machine-id-commit.service.8.html" target="_blank">systemd-machine-id-commit.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-machined.service.8.html" target="_blank">systemd-machined.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-modules-load.service.8.html" target="_blank">systemd-modules-load.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-networkd-wait-online.service.8.html" target="_blank">systemd-networkd-wait-online.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-networkd.service.8.html" target="_blank">systemd-networkd.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-quotacheck.service.8.html" target="_blank">systemd-quotacheck.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-random-seed.service.8.html" target="_blank">systemd-random-seed.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-remount-fs.service.8.html" target="_blank">systemd-remount-fs.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-resolved.service.8.html" target="_blank">systemd-resolved.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-rfkill@.service.8.html" target="_blank">systemd-rfkill@.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-shutdownd.service.8.html" target="_blank">systemd-shutdownd.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-socket-proxyd.8.html" target="_blank">systemd-socket-proxyd</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-suspend.service.8.html" target="_blank">systemd-suspend.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-sysctl.service.8.html" target="_blank">systemd-sysctl.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-system-update-generator.8.html" target="_blank">systemd-system-update-generator</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-sysusers.8.html" target="_blank">systemd-sysusers</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-sysv-generator.8.html" target="_blank">systemd-sysv-generator</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-timedated.service.8.html" target="_blank">systemd-timedated.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-timesyncd.service.8.html" target="_blank">systemd-timesyncd.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-tmpfiles.8.html" target="_blank">systemd-tmpfiles</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-update-utmp.service.8.html" target="_blank">systemd-update-utmp.service</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/vivid/man8/systemd-user-sessions.service.8.html" target="_blank">systemd-user-sessions.service</a></li>
+</ul>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../../content/package/index.html" class="navigation navigation-prev " aria-label="Previous page: 套件"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../../content/package/systemd/info.html" class="navigation navigation-next " aria-label="Next page: info"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../../gitbook/app.js"></script>
+
+    
+    <script src="../../../gitbook/plugins/gitbook-plugin-ga/plugin.js"></script>
+    
+
+    
+    <script src="https://cdn.mathjax.org/mathjax/2.4-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="../../../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":"night","family":"sans","size":1},"ga":{"token":"UA-55644249-1","configuration":"auto"}};
+    gitbook.start(config);
+});
+</script>
+
+        <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-55644249-1', 'auto');ga('send', 'pageview');</script>
+    </body>
+    
+</html>
