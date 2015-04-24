@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-level="1.1.2" data-basepath="../../.." data-revision="1429868541134">
+    <div class="book" data-level="1.1.2" data-basepath="../../.." data-revision="1429880674552">
     
 
 <div class="book-summary">
@@ -152,6 +152,76 @@
             
         </li>
     
+        
+        <li class="chapter " data-level="1.2" data-path="content/package/systemd-sysv/index.html">
+            
+                
+                    <a href="../../../content/package/systemd-sysv/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                         systemd-sysv
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.2.1" data-path="content/package/systemd-sysv/info.html">
+            
+                
+                    <a href="../../../content/package/systemd-sysv/info.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.1.</b>
+                        
+                         info
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.2" data-path="content/package/systemd-sysv/note.html">
+            
+                
+                    <a href="../../../content/package/systemd-sysv/note.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.2.</b>
+                        
+                         note
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2.3" data-path="content/package/systemd-sysv/report.html">
+            
+                
+                    <a href="../../../content/package/systemd-sysv/report.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.</b>
+                        
+                         report
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
             </ul>
             
@@ -249,7 +319,37 @@
                     <section class="normal" id="section-gitbook_5">
                     
                         <h1 id="systemd-note">systemd note</h1>
-
+<h2 id="ubuntu-wiki">Ubuntu Wiki</h2>
+<ul>
+<li><a href="https://wiki.ubuntu.com/SystemdForUpstartUsers" target="_blank">Systemd For Upstart Users</a></li>
+</ul>
+<h2 id="wiki">Wiki</h2>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Systemd" target="_blank">Systemd</a></li>
+<li><a href="http://zh.wikipedia.org/zh-tw/Systemd" target="_blank">Systemd</a></li>
+</ul>
+<h2 id="other">Other</h2>
+<ul>
+<li>freedesktop / <a href="http://www.freedesktop.org/wiki/Software/systemd/" target="_blank">systemd</a></li>
+<li>Debian Wiki / <a href="https://wiki.debian.org/systemd" target="_blank">systemd</a></li>
+</ul>
+<h2 id="">指令範例</h2>
+<p>執行</p>
+<pre><code class="lang-sh">$ dpkg -S /etc/systemd
+</code></pre>
+<p>顯示</p>
+<pre><code class="lang-sh">init-system-helpers, systemd: /etc/systemd
+</code></pre>
+<p>執行</p>
+<pre><code class="lang-sh">$ dpkg <span class="hljs-operator">-l</span> | grep systemd
+</code></pre>
+<p>顯示</p>
+<pre><code>ii  libpam-systemd:i386                                 219-7ubuntu3                               i386         system and service manager - PAM module
+ii  libsystemd0:i386                                    219-7ubuntu3                               i386         systemd utility library
+ii  systemd                                             219-7ubuntu3                               i386         system and service manager
+ii  systemd-shim                                        9-1bzr2                                    i386         shim for systemd
+ii  systemd-sysv                                        219-7ubuntu3                               i386         system and service manager - SysV links
+</code></pre>
                     
                     </section>
                 

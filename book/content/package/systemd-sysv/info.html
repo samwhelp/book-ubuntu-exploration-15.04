@@ -19,10 +19,10 @@
         
     
     
-    <link rel="next" href="../../../content/package/systemd/note.html" />
+    <link rel="next" href="../../../content/package/systemd-sysv/note.html" />
     
     
-    <link rel="prev" href="../../../content/package/systemd/index.html" />
+    <link rel="prev" href="../../../content/package/systemd-sysv/index.html" />
     
 
         
@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-level="1.1.1" data-basepath="../../.." data-revision="1429880674552">
+    <div class="book" data-level="1.2.1" data-basepath="../../.." data-revision="1429880674552">
     
 
 <div class="book-summary">
@@ -100,7 +100,7 @@
                 
     
         
-        <li class="chapter active" data-level="1.1.1" data-path="content/package/systemd/info.html">
+        <li class="chapter " data-level="1.1.1" data-path="content/package/systemd/info.html">
             
                 
                     <a href="../../../content/package/systemd/info.html">
@@ -170,7 +170,7 @@
                 
     
         
-        <li class="chapter " data-level="1.2.1" data-path="content/package/systemd-sysv/info.html">
+        <li class="chapter active" data-level="1.2.1" data-path="content/package/systemd-sysv/info.html">
             
                 
                     <a href="../../../content/package/systemd-sysv/info.html">
@@ -316,35 +316,31 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_4">
+                    <section class="normal" id="section-gitbook_8">
                     
-                        <h1 id="systemd-info">systemd info</h1>
+                        <h1 id="systemd-sysv-info">systemd-sysv info</h1>
 <h2 id="">套件資訊</h2>
 <p>執行</p>
-<pre><code>$ apt-cache show systemd
+<pre><code>$ apt-cache show systemd-sysv
 </code></pre><p>顯示</p>
-<pre><code>Package: systemd
+<pre><code>Package: systemd-sysv
 Priority: required
 Section: admin
-Installed-Size: 18216
+Installed-Size: 84
 Maintainer: Ubuntu Developers &lt;ubuntu-devel-discuss@lists.ubuntu.com&gt;
 Original-Maintainer: Debian systemd Maintainers &lt;pkg-systemd-maintainers@lists.alioth.debian.org&gt;
 Architecture: i386
+Source: systemd
 Version: 219-7ubuntu3
-Replaces: systemd-services
-Provides: systemd-services
-Depends: libacl1 (&gt;= 2.2.51-8), libapparmor1 (&gt;= 2.8.98-0ubuntu4), libaudit1 (&gt;= 1:2.2.1), libblkid1 (&gt;= 2.19.1), libcap2 (&gt;= 1:2.10), libcryptsetup4 (&gt;= 2:1.4.3), libkmod2 (&gt;= 5~), libmount1 (&gt;= 2.20.1), libpam0g (&gt;= 0.99.7.1), libselinux1 (&gt;= 2.1.9), libsystemd0 (= 219-7ubuntu3), util-linux (&gt;= 2.25), mount (&gt;= 2.25), initscripts (&gt;= 2.88dsf-53.2), sysv-rc, udev, adduser, libcap2-bin
-Pre-Depends: libc6 (&gt;= 2.17), libgcrypt20 (&gt;= 1.6.1), liblzma5 (&gt;= 5.1.1alpha+20120614), libselinux1 (&gt;= 1.32)
-Recommends: libpam-systemd, dbus
-Suggests: systemd-ui
-Conflicts: klogd, systemd-services
-Breaks: lsb-base (&lt;&lt; 4.1+Debian4), lvm2 (&lt;&lt; 2.02.104-1), systemd-shim (&lt;&lt; 8-2)
-Filename: pool/main/s/systemd/systemd_219-7ubuntu3_i386.deb
-Size: 3531908
-MD5sum: b1552de6eda25ff08469c7086dcc4f3a
-SHA1: a193930f35eefec68169a8ff0349a3ef01c8fbd5
-SHA256: f62799702d96940650647d84261079915c45fd0bd50b9e890d031cac6cdd8429
-Description-en: system and service manager
+Replaces: sysvinit (&lt;&lt; 2.88dsf-44~), sysvinit-core, upstart (&lt;&lt; 1.13.2-0ubuntu10~), upstart-sysv
+Pre-Depends: systemd
+Conflicts: sysvinit-core, upstart (&lt;&lt; 1.13.2-0ubuntu10~), upstart-sysv
+Filename: pool/main/s/systemd/systemd-sysv_219-7ubuntu3_i386.deb
+Size: 14636
+MD5sum: 84f9f3acff838d0967e7bf5105c34cf5
+SHA1: 2c23719ef260972b1d77889ecfa5eb3aea905502
+SHA256: 23c792150f162633ddfb80d6ea6899093fcbc0bbfd5c8b304268fc4723d4a4b7
+Description-en: system and service manager - SysV links
  systemd is a system and service manager for Linux. It provides aggressive
  parallelization capabilities, uses socket and D-Bus activation for starting
  services, offers on-demand starting of daemons, keeps track of processes
@@ -355,9 +351,10 @@ Description-en: system and service manager
  systemd is compatible with SysV and LSB init scripts and can work as a
  drop-in replacement for sysvinit.
  .
- Installing the systemd package will not switch your init system unless you
- boot with init=/bin/systemd or install systemd-sysv in addition.
-Description-md5: daa2c3e0044c2c2f5adc47475a3d6969
+ This package provides the manual pages and links needed for systemd
+ to replace sysvinit. Installing systemd-sysv will overwrite /sbin/init with a
+ link to systemd.
+Description-md5: 9e9b94d3800e0508e985c47fef5c1937
 Multi-Arch: foreign
 Homepage: http://www.freedesktop.org/wiki/Software/systemd
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
@@ -365,54 +362,36 @@ Origin: Ubuntu
 Supported: 9m
 Task: minimal
 </code></pre><p>執行</p>
-<pre><code>$ apt-cache showpkg systemd
+<pre><code>$ apt-cache showpkg systemd-sysv
 </code></pre><p>顯示</p>
-<pre><code>Package: systemd
-Versions:
+<pre><code>Package: systemd-sysv
+Versions: 
 219-7ubuntu3 (/var/lib/apt/lists/tw.archive.ubuntu.com_ubuntu_dists_vivid_main_binary-i386_Packages) (/var/lib/dpkg/status)
- Description Language:
+ Description Language: 
                  File: /var/lib/apt/lists/tw.archive.ubuntu.com_ubuntu_dists_vivid_main_binary-i386_Packages
-                  MD5: daa2c3e0044c2c2f5adc47475a3d6969
+                  MD5: 9e9b94d3800e0508e985c47fef5c1937
  Description Language: en
                  File: /var/lib/apt/lists/tw.archive.ubuntu.com_ubuntu_dists_vivid_main_i18n_Translation-en
-                  MD5: daa2c3e0044c2c2f5adc47475a3d6969
+                  MD5: 9e9b94d3800e0508e985c47fef5c1937
 
 
-Reverse Depends:
-  ubuntu-core-upgrader,systemd
-  tuxonice-userui,systemd 208-6
-  systemd-ui,systemd
-  solaar,systemd 44
-  sogo,systemd
-  pcscd,systemd
-  molly-guard,systemd
-  mate-power-manager,systemd
-  lxsession,systemd
-  lighttpd,systemd 29.1
-  knot,systemd
-  kde-config-systemd,systemd 215
-  gummiboot,systemd
-  click-systemd,systemd
-  ureadahead,systemd 217
-  udev,systemd 215-1
-  sysvinit-utils,systemd 215
-  sysv-rc,systemd 215
-  systemd-sysv,systemd
-  systemd-shim,systemd 209
-  systemd-dbg,systemd 219-7ubuntu3
-  rfkill,systemd 215-5ubuntu2
-  postgresql-common,systemd 204
-  libsystemd-dev,systemd 204-8
-  libsystemd-dev,systemd 204-8
-  libpam-systemd,systemd 219-7ubuntu3
-  init-system-helpers,systemd 44-12
-Dependencies:
-219-7ubuntu3 - libacl1 (2 2.2.51-8) libapparmor1 (2 2.8.98-0ubuntu4) libaudit1 (2 1:2.2.1) libblkid1 (2 2.19.1) libcap2 (2 1:2.10) libcryptsetup4 (2 2:1.4.3) libkmod2 (2 5~) libmount1 (2 2.20.1) libpam0g (2 0.99.7.1) libselinux1 (2 2.1.9) libsystemd0 (5 219-7ubuntu3) util-linux (2 2.25) mount (2 2.25) initscripts (2 2.88dsf-53.2) sysv-rc (0 (null)) udev (0 (null)) adduser (0 (null)) libcap2-bin (0 (null)) libc6 (2 2.17) libgcrypt20 (2 1.6.1) liblzma5 (2 5.1.1alpha+20120614) libselinux1 (2 1.32) systemd-ui (0 (null)) libpam-systemd (0 (null)) dbus (0 (null)) klogd (0 (null)) systemd-services (0 (null)) lsb-base (3 4.1+Debian4) lvm2 (3 2.02.104-1) systemd-shim (3 8-2) systemd-services (0 (null))
-Provides:
-219-7ubuntu3 - systemd-services
+Reverse Depends: 
+  xfce4-session,systemd-sysv
+  tuxonice-userui,systemd-sysv
+  systemd-cron,systemd-sysv 212
+  gpsd,systemd-sysv
+  upstart-sysv,systemd-sysv
+  ubuntu-standard,systemd-sysv
+  libpam-systemd,systemd-sysv
+  init,systemd-sysv
+  friendly-recovery,systemd-sysv
+Dependencies: 
+219-7ubuntu3 - systemd (0 (null)) sysvinit-core (0 (null)) upstart (3 1.13.2-0ubuntu10~) upstart-sysv (0 (null)) sysvinit (3 2.88dsf-44~) sysvinit-core (0 (null)) upstart (3 1.13.2-0ubuntu10~) upstart-sysv (0 (null)) 
+Provides: 
+219-7ubuntu3 - 
 Reverse Provides:
 </code></pre><p>執行</p>
-<pre><code>$ apt-cache showsrc systemd
+<pre><code>$ apt-cache showsrc systemd-sysv
 </code></pre><p>顯示</p>
 <pre><code>Package: systemd
 Binary: systemd, systemd-sysv, libpam-systemd, libsystemd0, libsystemd-dev, libsystemd-login-dev, libsystemd-daemon-dev, libsystemd-journal-dev, libsystemd-id128-dev, udev, libudev1, libudev-dev, udev-udeb, libudev1-udeb, libgudev-1.0-0, gir1.2-gudev-1.0, libgudev-1.0-dev, python3-systemd, systemd-dbg
@@ -464,43 +443,22 @@ Checksums-Sha256:
  5c57113454e37c040d0cb481bd960ae7cf3a3fe0a231ff4945259bc74503f2d9 3938228 systemd_219.orig.tar.xz
  8322ccc34266c9a7586b377c25ff4283d62566531b6037be41e3e0fe4df3d516 219896 systemd_219-7ubuntu3.debian.tar.xz
 </code></pre><p>執行</p>
-<pre><code>$ dpkg -s systemd
+<pre><code>$ dpkg -s systemd-sysv
 </code></pre><p>顯示</p>
-<pre><code>Package: systemd
+<pre><code>Package: systemd-sysv
 Status: install ok installed
 Priority: required
 Section: admin
-Installed-Size: 18216
+Installed-Size: 84
 Maintainer: Ubuntu Developers &lt;ubuntu-devel-discuss@lists.ubuntu.com&gt;
 Architecture: i386
 Multi-Arch: foreign
+Source: systemd
 Version: 219-7ubuntu3
-Replaces: systemd-services
-Provides: systemd-services
-Depends: libacl1 (&gt;= 2.2.51-8), libapparmor1 (&gt;= 2.8.98-0ubuntu4), libaudit1 (&gt;= 1:2.2.1), libblkid1 (&gt;= 2.19.1), libcap2 (&gt;= 1:2.10), libcryptsetup4 (&gt;= 2:1.4.3), libkmod2 (&gt;= 5~), libmount1 (&gt;= 2.20.1), libpam0g (&gt;= 0.99.7.1), libselinux1 (&gt;= 2.1.9), libsystemd0 (= 219-7ubuntu3), util-linux (&gt;= 2.25), mount (&gt;= 2.25), initscripts (&gt;= 2.88dsf-53.2), sysv-rc, udev, adduser, libcap2-bin
-Pre-Depends: libc6 (&gt;= 2.17), libgcrypt20 (&gt;= 1.6.1), liblzma5 (&gt;= 5.1.1alpha+20120614), libselinux1 (&gt;= 1.32)
-Recommends: libpam-systemd, dbus
-Suggests: systemd-ui
-Breaks: lsb-base (&lt;&lt; 4.1+Debian4), lvm2 (&lt;&lt; 2.02.104-1), systemd-shim (&lt;&lt; 8-2)
-Conflicts: klogd, systemd-services
-Conffiles:
- /etc/dbus-1/system.d/org.freedesktop.hostname1.conf f55c94d000b5d62b5f06d38852977dd1
- /etc/dbus-1/system.d/org.freedesktop.locale1.conf 5893ab03e7e96aa3759baceb4dd04190
- /etc/dbus-1/system.d/org.freedesktop.login1.conf 96bf488f3da8f0ca813cc78e71eeb605
- /etc/dbus-1/system.d/org.freedesktop.machine1.conf 206b67b8db666b714ba37c8257e10dad
- /etc/dbus-1/system.d/org.freedesktop.network1.conf 162e9a90d8f824f79ef2c6390827ec7b
- /etc/dbus-1/system.d/org.freedesktop.resolve1.conf 6969148b4616c56a5c9065cec5ab0775
- /etc/dbus-1/system.d/org.freedesktop.systemd1.conf 846824928e39a465c06c3aae53510535
- /etc/dbus-1/system.d/org.freedesktop.timedate1.conf 682369fbf3de26b21e775732c89a2bbe
- /etc/pam.d/systemd-user 0f3e67e1d7402cf3aa0ffde915168c94
- /etc/systemd/bootchart.conf 7cb6c9cab8ec511882e0e05fceb87e45
- /etc/systemd/journald.conf fb84d34126b84b864b9f708951a93ac1
- /etc/systemd/logind.conf 14ab8c27dd3c0c71cf92307f0171c15e
- /etc/systemd/resolved.conf a14d4e79c6d03ddd4d4f9bad8d7ab0a4
- /etc/systemd/system.conf 5434e3eefac186ad9724d882073b9c96
- /etc/systemd/timesyncd.conf 54914cf38ff3b8f7dc81b87bb3849520
- /etc/systemd/user.conf 2eaf5976751be8864d0555f30814d832
-Description: system and service manager
+Replaces: sysvinit (&lt;&lt; 2.88dsf-44~), sysvinit-core, upstart (&lt;&lt; 1.13.2-0ubuntu10~), upstart-sysv
+Pre-Depends: systemd
+Conflicts: sysvinit-core, upstart (&lt;&lt; 1.13.2-0ubuntu10~), upstart-sysv
+Description: system and service manager - SysV links
  systemd is a system and service manager for Linux. It provides aggressive
  parallelization capabilities, uses socket and D-Bus activation for starting
  services, offers on-demand starting of daemons, keeps track of processes
@@ -511,762 +469,88 @@ Description: system and service manager
  systemd is compatible with SysV and LSB init scripts and can work as a
  drop-in replacement for sysvinit.
  .
- Installing the systemd package will not switch your init system unless you
- boot with init=/bin/systemd or install systemd-sysv in addition.
+ This package provides the manual pages and links needed for systemd
+ to replace sysvinit. Installing systemd-sysv will overwrite /sbin/init with a
+ link to systemd.
 Homepage: http://www.freedesktop.org/wiki/Software/systemd
 Original-Maintainer: Debian systemd Maintainers &lt;pkg-systemd-maintainers@lists.alioth.debian.org&gt;
 </code></pre><p>執行</p>
-<pre><code>$ dpkg -l systemd
+<pre><code>$ dpkg -l systemd-sysv
 </code></pre><p>顯示</p>
 <pre><code>Desired=Unknown/Install/Remove/Purge/Hold
 | Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
 |/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
-||/ Name                                     Version                   Architecture              Description
-+++-========================================-=========================-=========================-=====================================================================================
-ii  systemd                                  219-7ubuntu3              i386                      system and service manager
+||/ Name                                 Version                 Architecture            Description
++++-====================================-=======================-=======================-=============================================================================
+ii  systemd-sysv                         219-7ubuntu3            i386                    system and service manager - SysV links
 </code></pre><h2 id="">準備工作環境</h2>
-<pre><code>mkdir  ~/Downloads/Package/systemd -p
-cd ~/Downloads/Package/systemd
+<pre><code>mkdir  ~/Downloads/Package/systemd-sysv -p
+cd ~/Downloads/Package/systemd-sysv
 mkdir download source
-</code></pre><h2 id="package-systemdhttppackagesubuntucomvividsystemd">探索「Package: <a href="http://packages.ubuntu.com/vivid/systemd" target="_blank">systemd</a>」</h2>
-<p>切換到「~/Downloads/Package/systemd/download」</p>
-<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> ~/Downloads/Package/systemd/download
+</code></pre><h2 id="package-systemd-sysvhttppackagesubuntucomvividsystemd-sysv">探索「Package: <a href="http://packages.ubuntu.com/vivid/systemd-sysv" target="_blank">systemd-sysv</a>」</h2>
+<p>切換到「~/Downloads/Package/systemd-sysv/download」</p>
+<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> ~/Downloads/Package/systemd-sysv/download
 </code></pre>
-<p>下載「Package: systemd」。</p>
-<pre><code class="lang-sh">$ apt-get download systemd
+<p>下載「Package: systemd-sysv」。</p>
+<pre><code class="lang-sh">$ apt-get download systemd-sysv
 </code></pre>
-<p>解開「package systemd」</p>
-<pre><code class="lang-sh">dpkg -x systemd_219-<span class="hljs-number">7</span>ubuntu3_i386.deb systemd
-dpkg <span class="hljs-operator">-e</span> systemd_219-<span class="hljs-number">7</span>ubuntu3_i386.deb
-<span class="hljs-comment"># ar xv systemd_219-7ubuntu3_i386.deb</span>
+<p>解開「package systemd-sysv」</p>
+<pre><code class="lang-sh">dpkg -x systemd-sysv_219-<span class="hljs-number">7</span>ubuntu3_i386.deb systemd-sysv
+dpkg <span class="hljs-operator">-e</span> systemd-sysv_219-<span class="hljs-number">7</span>ubuntu3_i386.deb
+<span class="hljs-comment"># ar xv systemd-sysv_219-7ubuntu3_i386.deb</span>
 </code></pre>
 <p>檢視套件檔案</p>
-<pre><code class="lang-sh">$ tree systemd
+<pre><code class="lang-sh">$ tree systemd-sysv
 </code></pre>
 <p>顯示</p>
-<pre><code>systemd
-├── bin
-│   ├── journalctl
-│   ├── loginctl
-│   ├── machinectl
-│   ├── networkctl
-│   ├── systemctl
-│   ├── systemd -&gt; /lib/systemd/systemd
-│   ├── systemd-ask-password
-│   ├── systemd-escape
-│   ├── systemd-inhibit
-│   ├── systemd-machine-id-setup
-│   ├── systemd-notify
-│   ├── systemd-tmpfiles
-│   └── systemd-tty-ask-password-agent
-├── etc
-│   ├── binfmt.d
-│   ├── dbus-1
-│   │   └── system.d
-│   │       ├── org.freedesktop.hostname1.conf
-│   │       ├── org.freedesktop.locale1.conf
-│   │       ├── org.freedesktop.login1.conf
-│   │       ├── org.freedesktop.machine1.conf
-│   │       ├── org.freedesktop.network1.conf
-│   │       ├── org.freedesktop.resolve1.conf
-│   │       ├── org.freedesktop.systemd1.conf
-│   │       └── org.freedesktop.timedate1.conf
-│   ├── init.d
-│   ├── modules-load.d
-│   │   └── modules.conf -&gt; ../modules
-│   ├── pam.d
-│   │   └── systemd-user
-│   ├── sysctl.d
-│   │   └── 99-sysctl.conf -&gt; ../sysctl.conf
-│   ├── systemd
-│   │   ├── bootchart.conf
-│   │   ├── journald.conf
-│   │   ├── logind.conf
-│   │   ├── network
-│   │   ├── resolved.conf
-│   │   ├── system
-│   │   ├── system.conf
-│   │   ├── timesyncd.conf
-│   │   ├── user
-│   │   └── user.conf
-│   ├── tmpfiles.d
-│   └── xdg
-│       └── systemd
-│           └── user -&gt; ../../systemd/user
-├── lib
-│   ├── lsb
-│   │   └── init-functions.d
-│   │       └── 40-systemd
-│   ├── systemd
-│   │   ├── debian-fixup
-│   │   ├── network
-│   │   │   ├── 80-container-host0.network
-│   │   │   ├── 80-container-ve.network
-│   │   │   └── 99-default.link
-│   │   ├── system
-│   │   │   ├── autovt@.service -&gt; getty@.service
-│   │   │   ├── basic.target
-│   │   │   ├── bluetooth.target
-│   │   │   ├── bootlogd.service -&gt; /dev/null
-│   │   │   ├── bootlogs.service -&gt; /dev/null
-│   │   │   ├── bootmisc.service -&gt; /dev/null
-│   │   │   ├── checkfs.service -&gt; /dev/null
-│   │   │   ├── checkroot-bootclean.service -&gt; /dev/null
-│   │   │   ├── checkroot.service -&gt; /dev/null
-│   │   │   ├── console-getty.service
-│   │   │   ├── console-shell.service
-│   │   │   ├── container-getty@.service
-│   │   │   ├── cryptdisks-early.service -&gt; /dev/null
-│   │   │   ├── cryptdisks.service -&gt; /dev/null
-│   │   │   ├── cryptsetup-pre.target
-│   │   │   ├── cryptsetup.target
-│   │   │   ├── ctrl-alt-del.target -&gt; reboot.target
-│   │   │   ├── dbus-org.freedesktop.hostname1.service -&gt; systemd-hostnamed.service
-│   │   │   ├── dbus-org.freedesktop.locale1.service -&gt; systemd-localed.service
-│   │   │   ├── dbus-org.freedesktop.login1.service -&gt; systemd-logind.service
-│   │   │   ├── dbus-org.freedesktop.machine1.service -&gt; systemd-machined.service
-│   │   │   ├── dbus-org.freedesktop.network1.service -&gt; systemd-networkd.service
-│   │   │   ├── dbus-org.freedesktop.resolve1.service -&gt; systemd-resolved.service
-│   │   │   ├── dbus-org.freedesktop.timedate1.service -&gt; systemd-timedated.service
-│   │   │   ├── debian-fixup.service
-│   │   │   ├── debug-shell.service
-│   │   │   ├── default.target -&gt; graphical.target
-│   │   │   ├── dev-hugepages.mount
-│   │   │   ├── dev-mqueue.mount
-│   │   │   ├── emergency.service
-│   │   │   ├── emergency.target
-│   │   │   ├── final.target
-│   │   │   ├── fuse.service -&gt; /dev/null
-│   │   │   ├── getty@.service
-│   │   │   ├── getty-static.service
-│   │   │   ├── getty.target
-│   │   │   ├── getty.target.wants
-│   │   │   │   └── getty-static.service -&gt; ../getty-static.service
-│   │   │   ├── graphical.target
-│   │   │   ├── graphical.target.wants
-│   │   │   │   └── systemd-update-utmp-runlevel.service -&gt; ../systemd-update-utmp-runlevel.service
-│   │   │   ├── halt.service -&gt; /dev/null
-│   │   │   ├── halt.target
-│   │   │   ├── hibernate.target
-│   │   │   ├── hostname.service -&gt; /dev/null
-│   │   │   ├── hwclock.service -&gt; /dev/null
-│   │   │   ├── hybrid-sleep.target
-│   │   │   ├── ifup@.service
-│   │   │   ├── initrd-cleanup.service
-│   │   │   ├── initrd-fs.target
-│   │   │   ├── initrd-parse-etc.service
-│   │   │   ├── initrd-root-fs.target
-│   │   │   ├── initrd-switch-root.service
-│   │   │   ├── initrd-switch-root.target
-│   │   │   ├── initrd.target
-│   │   │   ├── initrd-udevadm-cleanup-db.service
-│   │   │   ├── kexec.target
-│   │   │   ├── killprocs.service -&gt; /dev/null
-│   │   │   ├── kmod.service -&gt; systemd-modules-load.service
-│   │   │   ├── kmod-static-nodes.service
-│   │   │   ├── local-fs-pre.target
-│   │   │   ├── local-fs.target
-│   │   │   ├── local-fs.target.wants
-│   │   │   │   └── systemd-remount-fs.service -&gt; ../systemd-remount-fs.service
-│   │   │   ├── machine.slice
-│   │   │   ├── machines.target
-│   │   │   ├── mail-transport-agent.target
-│   │   │   ├── module-init-tools.service -&gt; systemd-modules-load.service
-│   │   │   ├── motd.service -&gt; /dev/null
-│   │   │   ├── mountall-bootclean.service -&gt; /dev/null
-│   │   │   ├── mountall.service -&gt; /dev/null
-│   │   │   ├── mountdevsubfs.service -&gt; /dev/null
-│   │   │   ├── mountkernfs.service -&gt; /dev/null
-│   │   │   ├── mountnfs-bootclean.service -&gt; /dev/null
-│   │   │   ├── mountnfs.service -&gt; /dev/null
-│   │   │   ├── multi-user.target
-│   │   │   ├── multi-user.target.wants
-│   │   │   │   ├── getty.target -&gt; ../getty.target
-│   │   │   │   ├── rc-local.service -&gt; ../rc-local.service
-│   │   │   │   ├── systemd-ask-password-wall.path -&gt; ../systemd-ask-password-wall.path
-│   │   │   │   ├── systemd-logind.service -&gt; ../systemd-logind.service
-│   │   │   │   ├── systemd-update-utmp-runlevel.service -&gt; ../systemd-update-utmp-runlevel.service
-│   │   │   │   └── systemd-user-sessions.service -&gt; ../systemd-user-sessions.service
-│   │   │   ├── networking.service.d
-│   │   │   │   └── systemd.conf
-│   │   │   ├── network-online.target
-│   │   │   ├── network-pre.target
-│   │   │   ├── network.target
-│   │   │   ├── nss-lookup.target
-│   │   │   ├── nss-user-lookup.target
-│   │   │   ├── paths.target
-│   │   │   ├── poweroff.target
-│   │   │   ├── poweroff.target.wants
-│   │   │   │   └── systemd-update-utmp-runlevel.service -&gt; ../systemd-update-utmp-runlevel.service
-│   │   │   ├── printer.target
-│   │   │   ├── procps.service -&gt; systemd-sysctl.service
-│   │   │   ├── proc-sys-fs-binfmt_misc.automount
-│   │   │   ├── proc-sys-fs-binfmt_misc.mount
-│   │   │   ├── quotaon.service
-│   │   │   ├── rc-local.service
-│   │   │   ├── rc.local.service -&gt; rc-local.service
-│   │   │   ├── reboot.service -&gt; /dev/null
-│   │   │   ├── reboot.target
-│   │   │   ├── reboot.target.wants
-│   │   │   │   └── systemd-update-utmp-runlevel.service -&gt; ../systemd-update-utmp-runlevel.service
-│   │   │   ├── remote-fs-pre.target
-│   │   │   ├── remote-fs.target
-│   │   │   ├── rescue.service
-│   │   │   ├── rescue.target
-│   │   │   ├── rescue.target.wants
-│   │   │   │   └── systemd-update-utmp-runlevel.service -&gt; ../systemd-update-utmp-runlevel.service
-│   │   │   ├── rmnologin.service -&gt; /dev/null
-│   │   │   ├── rpcbind.target
-│   │   │   ├── runlevel0.target -&gt; poweroff.target
-│   │   │   ├── runlevel1.target -&gt; rescue.target
-│   │   │   ├── runlevel1.target.wants
-│   │   │   │   └── systemd-update-utmp-runlevel.service -&gt; ../systemd-update-utmp-runlevel.service
-│   │   │   ├── runlevel2.target -&gt; multi-user.target
-│   │   │   ├── runlevel2.target.wants
-│   │   │   │   └── systemd-update-utmp-runlevel.service -&gt; ../systemd-update-utmp-runlevel.service
-│   │   │   ├── runlevel3.target -&gt; multi-user.target
-│   │   │   ├── runlevel3.target.wants
-│   │   │   │   └── systemd-update-utmp-runlevel.service -&gt; ../systemd-update-utmp-runlevel.service
-│   │   │   ├── runlevel4.target -&gt; multi-user.target
-│   │   │   ├── runlevel4.target.wants
-│   │   │   │   └── systemd-update-utmp-runlevel.service -&gt; ../systemd-update-utmp-runlevel.service
-│   │   │   ├── runlevel5.target -&gt; graphical.target
-│   │   │   ├── runlevel5.target.wants
-│   │   │   │   └── systemd-update-utmp-runlevel.service -&gt; ../systemd-update-utmp-runlevel.service
-│   │   │   ├── runlevel6.target -&gt; reboot.target
-│   │   │   ├── sendsigs.service -&gt; /dev/null
-│   │   │   ├── serial-getty@.service
-│   │   │   ├── shutdown.target
-│   │   │   ├── sigpwr.target
-│   │   │   ├── single.service -&gt; /dev/null
-│   │   │   ├── sleep.target
-│   │   │   ├── -.slice
-│   │   │   ├── slices.target
-│   │   │   ├── smartcard.target
-│   │   │   ├── sockets.target
-│   │   │   ├── sockets.target.wants
-│   │   │   │   ├── systemd-initctl.socket -&gt; ../systemd-initctl.socket
-│   │   │   │   ├── systemd-journald-audit.socket -&gt; ../systemd-journald-audit.socket
-│   │   │   │   ├── systemd-journald-dev-log.socket -&gt; ../systemd-journald-dev-log.socket
-│   │   │   │   ├── systemd-journald.socket -&gt; ../systemd-journald.socket
-│   │   │   │   └── systemd-shutdownd.socket -&gt; ../systemd-shutdownd.socket
-│   │   │   ├── sound.target
-│   │   │   ├── stop-bootlogd.service -&gt; /dev/null
-│   │   │   ├── stop-bootlogd-single.service -&gt; /dev/null
-│   │   │   ├── suspend.target
-│   │   │   ├── swap.target
-│   │   │   ├── sys-fs-fuse-connections.mount
-│   │   │   ├── sysinit.target
-│   │   │   ├── sysinit.target.wants
-│   │   │   │   ├── cryptsetup.target -&gt; ../cryptsetup.target
-│   │   │   │   ├── debian-fixup.service -&gt; ../debian-fixup.service
-│   │   │   │   ├── dev-hugepages.mount -&gt; ../dev-hugepages.mount
-│   │   │   │   ├── dev-mqueue.mount -&gt; ../dev-mqueue.mount
-│   │   │   │   ├── kmod-static-nodes.service -&gt; ../kmod-static-nodes.service
-│   │   │   │   ├── proc-sys-fs-binfmt_misc.automount -&gt; ../proc-sys-fs-binfmt_misc.automount
-│   │   │   │   ├── sys-fs-fuse-connections.mount -&gt; ../sys-fs-fuse-connections.mount
-│   │   │   │   ├── sys-kernel-config.mount -&gt; ../sys-kernel-config.mount
-│   │   │   │   ├── sys-kernel-debug.mount -&gt; ../sys-kernel-debug.mount
-│   │   │   │   ├── systemd-ask-password-console.path -&gt; ../systemd-ask-password-console.path
-│   │   │   │   ├── systemd-binfmt.service -&gt; ../systemd-binfmt.service
-│   │   │   │   ├── systemd-journald.service -&gt; ../systemd-journald.service
-│   │   │   │   ├── systemd-journal-flush.service -&gt; ../systemd-journal-flush.service
-│   │   │   │   ├── systemd-machine-id-commit.service -&gt; ../systemd-machine-id-commit.service
-│   │   │   │   ├── systemd-modules-load.service -&gt; ../systemd-modules-load.service
-│   │   │   │   ├── systemd-random-seed.service -&gt; ../systemd-random-seed.service
-│   │   │   │   ├── systemd-sysctl.service -&gt; ../systemd-sysctl.service
-│   │   │   │   ├── systemd-tmpfiles-setup-dev.service -&gt; ../systemd-tmpfiles-setup-dev.service
-│   │   │   │   ├── systemd-tmpfiles-setup.service -&gt; ../systemd-tmpfiles-setup.service
-│   │   │   │   └── systemd-update-utmp.service -&gt; ../systemd-update-utmp.service
-│   │   │   ├── sys-kernel-config.mount
-│   │   │   ├── sys-kernel-debug.mount
-│   │   │   ├── syslog.socket
-│   │   │   ├── systemd-ask-password-console.path
-│   │   │   ├── systemd-ask-password-console.service
-│   │   │   ├── systemd-ask-password-wall.path
-│   │   │   ├── systemd-ask-password-wall.service
-│   │   │   ├── systemd-backlight@.service
-│   │   │   ├── systemd-binfmt.service
-│   │   │   ├── systemd-bootchart.service
-│   │   │   ├── systemd-fsckd.service
-│   │   │   ├── systemd-fsckd.socket
-│   │   │   ├── systemd-fsck-root.service
-│   │   │   ├── systemd-fsck@.service
-│   │   │   ├── systemd-halt.service
-│   │   │   ├── systemd-hibernate-resume@.service
-│   │   │   ├── systemd-hibernate.service
-│   │   │   ├── systemd-hostnamed.service
-│   │   │   ├── systemd-hybrid-sleep.service
-│   │   │   ├── systemd-initctl.service
-│   │   │   ├── systemd-initctl.socket
-│   │   │   ├── systemd-journald-audit.socket
-│   │   │   ├── systemd-journald-dev-log.socket
-│   │   │   ├── systemd-journald.service
-│   │   │   ├── systemd-journald.socket
-│   │   │   ├── systemd-journal-flush.service
-│   │   │   ├── systemd-kexec.service
-│   │   │   ├── systemd-localed.service
-│   │   │   ├── systemd-logind.service
-│   │   │   ├── systemd-machined.service
-│   │   │   ├── systemd-machine-id-commit.service
-│   │   │   ├── systemd-modules-load.service
-│   │   │   ├── systemd-networkd.service
-│   │   │   ├── systemd-networkd.socket
-│   │   │   ├── systemd-networkd-wait-online.service
-│   │   │   ├── systemd-nspawn@.service
-│   │   │   ├── systemd-poweroff.service
-│   │   │   ├── systemd-quotacheck.service
-│   │   │   ├── systemd-random-seed.service
-│   │   │   ├── systemd-reboot.service
-│   │   │   ├── systemd-remount-fs.service
-│   │   │   ├── systemd-resolved.service
-│   │   │   ├── systemd-rfkill@.service
-│   │   │   ├── systemd-setup-dgram-qlen.service
-│   │   │   ├── systemd-shutdownd.service
-│   │   │   ├── systemd-shutdownd.socket
-│   │   │   ├── systemd-suspend.service
-│   │   │   ├── systemd-sysctl.service
-│   │   │   ├── systemd-timedated.service
-│   │   │   ├── systemd-timesyncd.service
-│   │   │   ├── systemd-timesyncd.service.d
-│   │   │   │   └── disable-with-time-daemon.conf
-│   │   │   ├── systemd-tmpfiles-clean.service
-│   │   │   ├── systemd-tmpfiles-clean.timer
-│   │   │   ├── systemd-tmpfiles-setup-dev.service
-│   │   │   ├── systemd-tmpfiles-setup.service
-│   │   │   ├── systemd-update-utmp-runlevel.service
-│   │   │   ├── systemd-update-utmp.service
-│   │   │   ├── systemd-user-sessions.service
-│   │   │   ├── systemd-vconsole-setup.service
-│   │   │   ├── system.slice
-│   │   │   ├── system-update.target
-│   │   │   ├── timers.target
-│   │   │   ├── timers.target.wants
-│   │   │   │   └── systemd-tmpfiles-clean.timer -&gt; ../systemd-tmpfiles-clean.timer
-│   │   │   ├── time-sync.target
-│   │   │   ├── tmp.mount
-│   │   │   ├── umountfs.service -&gt; /dev/null
-│   │   │   ├── umountnfs.service -&gt; /dev/null
-│   │   │   ├── umountroot.service -&gt; /dev/null
-│   │   │   ├── umount.target
-│   │   │   ├── urandom.service -&gt; systemd-random-seed.service
-│   │   │   ├── user@.service
-│   │   │   ├── user.slice
-│   │   │   └── x11-common.service -&gt; /dev/null
-│   │   ├── systemd
-│   │   ├── systemd-ac-power
-│   │   ├── systemd-activate
-│   │   ├── systemd-backlight
-│   │   ├── systemd-binfmt
-│   │   ├── systemd-bootchart
-│   │   ├── systemd-bus-proxyd
-│   │   ├── systemd-cgroups-agent
-│   │   ├── systemd-cryptsetup
-│   │   ├── systemd-fsck
-│   │   ├── systemd-fsckd
-│   │   ├── systemd-hibernate-resume
-│   │   ├── systemd-hostnamed
-│   │   ├── systemd-initctl
-│   │   ├── systemd-journald
-│   │   ├── systemd-localed
-│   │   ├── systemd-logind
-│   │   ├── systemd-machined
-│   │   ├── systemd-machine-id-commit
-│   │   ├── systemd-modules-load
-│   │   ├── systemd-networkd
-│   │   ├── systemd-networkd-wait-online
-│   │   ├── systemd-quotacheck
-│   │   ├── systemd-random-seed
-│   │   ├── systemd-remount-fs
-│   │   ├── systemd-reply-password
-│   │   ├── systemd-resolved
-│   │   ├── systemd-resolve-host
-│   │   ├── systemd-rfkill
-│   │   ├── systemd-shutdown
-│   │   ├── systemd-shutdownd
-│   │   ├── systemd-sleep
-│   │   ├── systemd-socket-proxyd
-│   │   ├── systemd-sysctl
-│   │   ├── systemd-timedated
-│   │   ├── systemd-timesyncd
-│   │   ├── systemd-update-utmp
-│   │   ├── systemd-user-sessions
-│   │   ├── system-generators
-│   │   │   ├── systemd-cryptsetup-generator
-│   │   │   ├── systemd-debug-generator
-│   │   │   ├── systemd-default-display-manager-generator
-│   │   │   ├── systemd-efi-boot-generator
-│   │   │   ├── systemd-fstab-generator
-│   │   │   ├── systemd-getty-generator
-│   │   │   ├── systemd-gpt-auto-generator
-│   │   │   ├── systemd-hibernate-resume-generator
-│   │   │   ├── systemd-insserv-generator
-│   │   │   ├── systemd-system-update-generator
-│   │   │   └── systemd-sysv-generator
-│   │   ├── system-preset
-│   │   │   └── 90-systemd.preset
-│   │   ├── system-shutdown
-│   │   └── system-sleep
-│   └── udev
-│       └── rules.d
-│           ├── 70-uaccess.rules
-│           ├── 71-seat.rules
-│           ├── 73-seat-late.rules
-│           └── 99-systemd.rules
-├── usr
-│   ├── bin
-│   │   ├── bootctl
-│   │   ├── busctl
-│   │   ├── hostnamectl
-│   │   ├── localectl
-│   │   ├── systemd-analyze
-│   │   ├── systemd-cat
-│   │   ├── systemd-cgls
-│   │   ├── systemd-cgtop
-│   │   ├── systemd-delta
-│   │   ├── systemd-detect-virt
-│   │   ├── systemd-nspawn
-│   │   ├── systemd-path
-│   │   ├── systemd-run
-│   │   ├── systemd-stdio-bridge
-│   │   └── timedatectl
-│   ├── lib
-│   │   ├── binfmt.d
-│   │   ├── i386-linux-gnu
-│   │   │   └── pkgconfig
-│   │   │       └── systemd.pc
-│   │   ├── modules-load.d
-│   │   ├── sysctl.d
-│   │   ├── systemd
-│   │   │   ├── catalog
-│   │   │   │   ├── systemd.catalog
-│   │   │   │   ├── systemd.fr.catalog
-│   │   │   │   ├── systemd.it.catalog
-│   │   │   │   ├── systemd.pl.catalog
-│   │   │   │   ├── systemd.pt_BR.catalog
-│   │   │   │   └── systemd.ru.catalog
-│   │   │   ├── network
-│   │   │   ├── user
-│   │   │   │   ├── basic.target
-│   │   │   │   ├── bluetooth.target -&gt; /lib/systemd/system/bluetooth.target
-│   │   │   │   ├── default.target
-│   │   │   │   ├── exit.target
-│   │   │   │   ├── paths.target -&gt; /lib/systemd/system/paths.target
-│   │   │   │   ├── printer.target -&gt; /lib/systemd/system/printer.target
-│   │   │   │   ├── shutdown.target -&gt; /lib/systemd/system/shutdown.target
-│   │   │   │   ├── smartcard.target -&gt; /lib/systemd/system/smartcard.target
-│   │   │   │   ├── sockets.target -&gt; /lib/systemd/system/sockets.target
-│   │   │   │   ├── sound.target -&gt; /lib/systemd/system/sound.target
-│   │   │   │   ├── systemd-exit.service
-│   │   │   │   └── timers.target -&gt; /lib/systemd/system/timers.target
-│   │   │   └── user-generators
-│   │   └── tmpfiles.d
-│   │       ├── debian.conf
-│   │       ├── legacy.conf
-│   │       ├── systemd.conf
-│   │       ├── systemd-nologin.conf
-│   │       ├── tmp.conf
-│   │       ├── var.conf
-│   │       └── x11.conf
-│   └── share
-│       ├── apport
-│       │   └── package-hooks
-│       │       └── systemd.py
-│       ├── bash-completion
-│       │   └── completions
-│       │       ├── bootctl
-│       │       ├── busctl
-│       │       ├── hostnamectl
-│       │       ├── journalctl
-│       │       ├── localectl
-│       │       ├── loginctl
-│       │       ├── machinectl
-│       │       ├── systemctl
-│       │       ├── systemd-analyze
-│       │       ├── systemd-cat
-│       │       ├── systemd-cgls
-│       │       ├── systemd-cgtop
-│       │       ├── systemd-delta
-│       │       ├── systemd-detect-virt
-│       │       ├── systemd-nspawn
-│       │       ├── systemd-run
-│       │       └── timedatectl
-│       ├── bug
-│       │   └── systemd
-│       ├── dbus-1
-│       │   ├── services
-│       │   │   └── org.freedesktop.systemd1.service -&gt; ../system-services/org.freedesktop.systemd1.service
-│       │   └── system-services
-│       │       ├── org.freedesktop.hostname1.service
-│       │       ├── org.freedesktop.locale1.service
-│       │       ├── org.freedesktop.login1.service
-│       │       ├── org.freedesktop.machine1.service
-│       │       ├── org.freedesktop.network1.service
-│       │       ├── org.freedesktop.resolve1.service
-│       │       ├── org.freedesktop.systemd1.service
-│       │       └── org.freedesktop.timedate1.service
-│       ├── doc
-│       │   └── systemd
-│       │       ├── changelog.Debian.gz -&gt; ../libsystemd0/changelog.Debian.gz
-│       │       ├── copyright
-│       │       ├── DIFFERENCES
-│       │       ├── DISTRO_PORTING
-│       │       ├── GVARIANT-SERIALIZATION.gz
-│       │       ├── NEWS.gz
-│       │       ├── PORTING-DBUS1.gz
-│       │       ├── README.Debian
-│       │       ├── README.gz
-│       │       └── sd-shutdown.h
-│       ├── lintian
-│       │   └── overrides
-│       │       └── systemd
-│       ├── man
-│       │   ├── man1
-│       │   │   ├── bootctl.1.gz
-│       │   │   ├── busctl.1.gz
-│       │   │   ├── hostnamectl.1.gz
-│       │   │   ├── journalctl.1.gz
-│       │   │   ├── localectl.1.gz
-│       │   │   ├── loginctl.1.gz
-│       │   │   ├── machinectl.1.gz
-│       │   │   ├── networkctl.1.gz
-│       │   │   ├── systemctl.1.gz
-│       │   │   ├── systemd.1.gz
-│       │   │   ├── systemd-analyze.1.gz
-│       │   │   ├── systemd-ask-password.1.gz
-│       │   │   ├── systemd-bootchart.1.gz
-│       │   │   ├── systemd-cat.1.gz
-│       │   │   ├── systemd-cgls.1.gz
-│       │   │   ├── systemd-cgtop.1.gz
-│       │   │   ├── systemd-delta.1.gz
-│       │   │   ├── systemd-detect-virt.1.gz
-│       │   │   ├── systemd-escape.1.gz
-│       │   │   ├── systemd-inhibit.1.gz
-│       │   │   ├── systemd-machine-id-commit.1.gz
-│       │   │   ├── systemd-machine-id-setup.1.gz
-│       │   │   ├── systemd-notify.1.gz
-│       │   │   ├── systemd-nspawn.1.gz
-│       │   │   ├── systemd-path.1.gz
-│       │   │   ├── systemd-run.1.gz
-│       │   │   ├── systemd-tty-ask-password-agent.1.gz
-│       │   │   └── timedatectl.1.gz
-│       │   ├── man5
-│       │   │   ├── binfmt.d.5.gz
-│       │   │   ├── bootchart.conf.5.gz
-│       │   │   ├── bootchart.conf.d.5.gz -&gt; bootchart.conf.5.gz
-│       │   │   ├── hostname.5.gz
-│       │   │   ├── journald.conf.5.gz
-│       │   │   ├── journald.conf.d.5.gz -&gt; journald.conf.5.gz
-│       │   │   ├── locale.conf.5.gz
-│       │   │   ├── localtime.5.gz
-│       │   │   ├── logind.conf.5.gz
-│       │   │   ├── logind.conf.d.5.gz -&gt; logind.conf.5.gz
-│       │   │   ├── machine-id.5.gz
-│       │   │   ├── machine-info.5.gz
-│       │   │   ├── modules-load.d.5.gz
-│       │   │   ├── os-release.5.gz
-│       │   │   ├── resolved.conf.5.gz
-│       │   │   ├── resolved.conf.d.5.gz -&gt; resolved.conf.5.gz
-│       │   │   ├── sleep.conf.d.5.gz -&gt; systemd-sleep.conf.5.gz
-│       │   │   ├── sysctl.d.5.gz
-│       │   │   ├── system.conf.d.5.gz -&gt; systemd-system.conf.5.gz
-│       │   │   ├── systemd.automount.5.gz
-│       │   │   ├── systemd.device.5.gz
-│       │   │   ├── systemd.exec.5.gz
-│       │   │   ├── systemd.kill.5.gz
-│       │   │   ├── systemd.link.5.gz
-│       │   │   ├── systemd.mount.5.gz
-│       │   │   ├── systemd.netdev.5.gz
-│       │   │   ├── systemd.network.5.gz
-│       │   │   ├── systemd.path.5.gz
-│       │   │   ├── systemd.preset.5.gz
-│       │   │   ├── systemd.resource-control.5.gz
-│       │   │   ├── systemd.scope.5.gz
-│       │   │   ├── systemd.service.5.gz
-│       │   │   ├── systemd-sleep.conf.5.gz
-│       │   │   ├── systemd.slice.5.gz
-│       │   │   ├── systemd.snapshot.5.gz
-│       │   │   ├── systemd.socket.5.gz
-│       │   │   ├── systemd.swap.5.gz
-│       │   │   ├── systemd-system.conf.5.gz
-│       │   │   ├── systemd.target.5.gz
-│       │   │   ├── systemd.timer.5.gz
-│       │   │   ├── systemd.unit.5.gz
-│       │   │   ├── systemd-user.conf.5.gz -&gt; systemd-system.conf.5.gz
-│       │   │   ├── sysusers.d.5.gz
-│       │   │   ├── timesyncd.conf.5.gz
-│       │   │   ├── timesyncd.conf.d.5.gz -&gt; timesyncd.conf.5.gz
-│       │   │   ├── tmpfiles.d.5.gz
-│       │   │   ├── udev.conf.5.gz
-│       │   │   └── user.conf.d.5.gz -&gt; systemd-system.conf.5.gz
-│       │   ├── man7
-│       │   │   ├── bootup.7.gz
-│       │   │   ├── daemon.7.gz
-│       │   │   ├── file-hierarchy.7.gz
-│       │   │   ├── kernel-command-line.7.gz
-│       │   │   ├── systemd.directives.7.gz
-│       │   │   ├── systemd.generator.7.gz
-│       │   │   ├── systemd.index.7.gz
-│       │   │   ├── systemd.journal-fields.7.gz
-│       │   │   ├── systemd.special.7.gz
-│       │   │   └── systemd.time.7.gz
-│       │   └── man8
-│       │       ├── libnss_mymachines.so.2.8.gz -&gt; nss-mymachines.8.gz
-│       │       ├── nss-mymachines.8.gz
-│       │       ├── systemd-activate.8.gz
-│       │       ├── systemd-ask-password-console.path.8.gz -&gt; systemd-ask-password-console.service.8.gz
-│       │       ├── systemd-ask-password-console.service.8.gz
-│       │       ├── systemd-ask-password-wall.path.8.gz -&gt; systemd-ask-password-console.service.8.gz
-│       │       ├── systemd-ask-password-wall.service.8.gz -&gt; systemd-ask-password-console.service.8.gz
-│       │       ├── systemd-backlight.8.gz -&gt; systemd-backlight@.service.8.gz
-│       │       ├── systemd-backlight@.service.8.gz
-│       │       ├── systemd-binfmt.8.gz -&gt; systemd-binfmt.service.8.gz
-│       │       ├── systemd-binfmt.service.8.gz
-│       │       ├── systemd-cryptsetup.8.gz -&gt; systemd-cryptsetup@.service.8.gz
-│       │       ├── systemd-cryptsetup-generator.8.gz
-│       │       ├── systemd-cryptsetup@.service.8.gz
-│       │       ├── systemd-debug-generator.8.gz
-│       │       ├── systemd-efi-boot-generator.8.gz
-│       │       ├── systemd-fsck.8.gz -&gt; systemd-fsck@.service.8.gz
-│       │       ├── systemd-fsckd.8.gz -&gt; systemd-fsckd.service.8.gz
-│       │       ├── systemd-fsckd.service.8.gz
-│       │       ├── systemd-fsckd.socket.8.gz -&gt; systemd-fsckd.service.8.gz
-│       │       ├── systemd-fsck-root.service.8.gz -&gt; systemd-fsck@.service.8.gz
-│       │       ├── systemd-fsck@.service.8.gz
-│       │       ├── systemd-fstab-generator.8.gz
-│       │       ├── systemd-getty-generator.8.gz
-│       │       ├── systemd-gpt-auto-generator.8.gz
-│       │       ├── systemd-halt.service.8.gz
-│       │       ├── systemd-hibernate-resume.8.gz -&gt; systemd-hibernate-resume@.service.8.gz
-│       │       ├── systemd-hibernate-resume-generator.8.gz
-│       │       ├── systemd-hibernate-resume@.service.8.gz
-│       │       ├── systemd-hibernate.service.8.gz -&gt; systemd-suspend.service.8.gz
-│       │       ├── systemd-hostnamed.8.gz -&gt; systemd-hostnamed.service.8.gz
-│       │       ├── systemd-hostnamed.service.8.gz
-│       │       ├── systemd-hybrid-sleep.service.8.gz -&gt; systemd-suspend.service.8.gz
-│       │       ├── systemd-initctl.8.gz -&gt; systemd-initctl.service.8.gz
-│       │       ├── systemd-initctl.service.8.gz
-│       │       ├── systemd-initctl.socket.8.gz -&gt; systemd-initctl.service.8.gz
-│       │       ├── systemd-journald.8.gz -&gt; systemd-journald.service.8.gz
-│       │       ├── systemd-journald-dev-log.socket.8.gz -&gt; systemd-journald.service.8.gz
-│       │       ├── systemd-journald.service.8.gz
-│       │       ├── systemd-journald.socket.8.gz -&gt; systemd-journald.service.8.gz
-│       │       ├── systemd-kexec.service.8.gz -&gt; systemd-halt.service.8.gz
-│       │       ├── systemd-localed.8.gz -&gt; systemd-localed.service.8.gz
-│       │       ├── systemd-localed.service.8.gz
-│       │       ├── systemd-logind.8.gz -&gt; systemd-logind.service.8.gz
-│       │       ├── systemd-logind.service.8.gz
-│       │       ├── systemd-machined.8.gz -&gt; systemd-machined.service.8.gz
-│       │       ├── systemd-machined.service.8.gz
-│       │       ├── systemd-machine-id-commit.service.8.gz
-│       │       ├── systemd-modules-load.8.gz -&gt; systemd-modules-load.service.8.gz
-│       │       ├── systemd-modules-load.service.8.gz
-│       │       ├── systemd-networkd.8.gz -&gt; systemd-networkd.service.8.gz
-│       │       ├── systemd-networkd.service.8.gz
-│       │       ├── systemd-networkd-wait-online.8.gz -&gt; systemd-networkd-wait-online.service.8.gz
-│       │       ├── systemd-networkd-wait-online.service.8.gz
-│       │       ├── systemd-poweroff.service.8.gz -&gt; systemd-halt.service.8.gz
-│       │       ├── systemd-quotacheck.8.gz -&gt; systemd-quotacheck.service.8.gz
-│       │       ├── systemd-quotacheck.service.8.gz
-│       │       ├── systemd-random-seed.8.gz -&gt; systemd-random-seed.service.8.gz
-│       │       ├── systemd-random-seed.service.8.gz
-│       │       ├── systemd-reboot.service.8.gz -&gt; systemd-halt.service.8.gz
-│       │       ├── systemd-remount-fs.8.gz -&gt; systemd-remount-fs.service.8.gz
-│       │       ├── systemd-remount-fs.service.8.gz
-│       │       ├── systemd-resolved.8.gz -&gt; systemd-resolved.service.8.gz
-│       │       ├── systemd-resolved.service.8.gz
-│       │       ├── systemd-rfkill.8.gz -&gt; systemd-rfkill@.service.8.gz
-│       │       ├── systemd-rfkill@.service.8.gz
-│       │       ├── systemd-shutdown.8.gz -&gt; systemd-halt.service.8.gz
-│       │       ├── systemd-shutdownd.8.gz -&gt; systemd-shutdownd.service.8.gz
-│       │       ├── systemd-shutdownd.service.8.gz
-│       │       ├── systemd-shutdownd.socket.8.gz -&gt; systemd-shutdownd.service.8.gz
-│       │       ├── systemd-sleep.8.gz -&gt; systemd-suspend.service.8.gz
-│       │       ├── systemd-socket-proxyd.8.gz
-│       │       ├── systemd-suspend.service.8.gz
-│       │       ├── systemd-sysctl.8.gz -&gt; systemd-sysctl.service.8.gz
-│       │       ├── systemd-sysctl.service.8.gz
-│       │       ├── systemd-system-update-generator.8.gz
-│       │       ├── systemd-sysusers.8.gz
-│       │       ├── systemd-sysusers.service.8.gz -&gt; systemd-sysusers.8.gz
-│       │       ├── systemd-sysv-generator.8.gz
-│       │       ├── systemd-timedated.8.gz -&gt; systemd-timedated.service.8.gz
-│       │       ├── systemd-timedated.service.8.gz
-│       │       ├── systemd-timesyncd.8.gz -&gt; systemd-timesyncd.service.8.gz
-│       │       ├── systemd-timesyncd.service.8.gz
-│       │       ├── systemd-tmpfiles.8.gz
-│       │       ├── systemd-tmpfiles-clean.service.8.gz -&gt; systemd-tmpfiles.8.gz
-│       │       ├── systemd-tmpfiles-clean.timer.8.gz -&gt; systemd-tmpfiles.8.gz
-│       │       ├── systemd-tmpfiles-setup-dev.service.8.gz -&gt; systemd-tmpfiles.8.gz
-│       │       ├── systemd-tmpfiles-setup.service.8.gz -&gt; systemd-tmpfiles.8.gz
-│       │       ├── systemd-update-utmp.8.gz -&gt; systemd-update-utmp.service.8.gz
-│       │       ├── systemd-update-utmp-runlevel.service.8.gz -&gt; systemd-update-utmp.service.8.gz
-│       │       ├── systemd-update-utmp.service.8.gz
-│       │       ├── systemd-user-sessions.8.gz -&gt; systemd-user-sessions.service.8.gz
-│       │       └── systemd-user-sessions.service.8.gz
-│       ├── polkit-1
-│       │   └── actions
-│       │       ├── org.freedesktop.hostname1.policy
-│       │       ├── org.freedesktop.locale1.policy
-│       │       ├── org.freedesktop.login1.policy
-│       │       ├── org.freedesktop.machine1.policy
-│       │       ├── org.freedesktop.systemd1.policy
-│       │       └── org.freedesktop.timedate1.policy
-│       ├── systemd
-│       │   ├── kbd-model-map
-│       │   └── language-fallback-map
-│       └── zsh
-│           └── vendor-completions
-│               ├── _bootctl
-│               ├── _hostnamectl
-│               ├── _journalctl
-│               ├── _localectl
-│               ├── _loginctl
-│               ├── _machinectl
-│               ├── _sd_hosts_or_user_at_host
-│               ├── _sd_machines
-│               ├── _sd_outputmodes
-│               ├── _sd_unit_files
-│               ├── _systemctl
-│               ├── _systemd
-│               ├── _systemd-analyze
-│               ├── _systemd-delta
-│               ├── _systemd-inhibit
-│               ├── _systemd-nspawn
-│               ├── _systemd-run
-│               ├── _systemd-tmpfiles
-│               ├── _timedatectl
-│               └── _udevadm
-└── var
-    └── lib
-        └── systemd
+<pre><code>systemd-sysv
+├── sbin
+│   ├── halt -&gt; /bin/systemctl
+│   ├── init -&gt; /lib/systemd/systemd
+│   ├── poweroff -&gt; /bin/systemctl
+│   ├── reboot -&gt; /bin/systemctl
+│   ├── runlevel -&gt; /bin/systemctl
+│   ├── shutdown -&gt; /bin/systemctl
+│   └── telinit -&gt; /bin/systemctl
+└── usr
+    └── share
+        ├── doc
+        │   └── systemd-sysv
+        │       ├── changelog.Debian.gz
+        │       └── copyright
+        └── man
+            ├── man1
+            │   └── init.1.gz
+            └── man8
+                ├── halt.8.gz
+                ├── poweroff.8.gz -&gt; halt.8.gz
+                ├── reboot.8.gz -&gt; halt.8.gz
+                ├── runlevel.8.gz
+                ├── shutdown.8.gz
+                └── telinit.8.gz
 
-86 directories, 609 files
+8 directories, 16 files
 </code></pre><p>執行</p>
 <pre><code>$ tree DEBIAN
 </code></pre><p>顯示</p>
-<pre><code>DEBIAN/
-├── conffiles
+<pre><code>DEBIAN
 ├── control
 ├── md5sums
-├── postinst
-├── postrm
-├── preinst
-├── prerm
-└── triggers
+└── postinst
 
-0 directories, 8 files
+0 directories, 3 files
 </code></pre><h2 id="source-package-systemdhttppackagesubuntucomsourcevividsystemd">探索「Source Package: <a href="http://packages.ubuntu.com/source/vivid/systemd" target="_blank">systemd</a>」</h2>
-<p>切換到「~/Downloads/Package/systemd/source」</p>
-<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> ~/Downloads/Package/systemd/<span class="hljs-built_in">source</span>
+<p>切換到「~/Downloads/Package/systemd-sysv/source」</p>
+<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> ~/Downloads/Package/systemd-sysv/<span class="hljs-built_in">source</span>
 </code></pre>
 <p>下載「Source Package: systemd」。</p>
-<pre><code class="lang-sh">$ apt-get <span class="hljs-built_in">source</span> systemd
+<pre><code class="lang-sh">$ apt-get <span class="hljs-built_in">source</span> systemd-sysv
 </code></pre>
 <p>檢視原始碼套件檔案。</p>
 <pre><code>$ tree systemd-219
 </code></pre><p>顯示</p>
-<pre><code>systemd-219
+<pre><code>
+systemd-219
 ├── aclocal.m4
 ├── build-aux
 │   ├── compile
@@ -4331,10 +3615,10 @@ dpkg <span class="hljs-operator">-e</span> systemd_219-<span class="hljs-number"
         </div>
 
         
-        <a href="../../../content/package/systemd/index.html" class="navigation navigation-prev " aria-label="Previous page: systemd"><i class="fa fa-angle-left"></i></a>
+        <a href="../../../content/package/systemd-sysv/index.html" class="navigation navigation-prev " aria-label="Previous page: systemd-sysv"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../../content/package/systemd/note.html" class="navigation navigation-next " aria-label="Next page: note"><i class="fa fa-angle-right"></i></a>
+        <a href="../../../content/package/systemd-sysv/note.html" class="navigation navigation-next " aria-label="Next page: note"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
